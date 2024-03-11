@@ -1,7 +1,9 @@
 package main
 
-import(
-
+import (
+	generic "github.com/nekonugget/didnt-rtfm/platforms"
 )
 
-func main()
+func main() {
+	generic.CrawlTest()
+}
