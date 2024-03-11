@@ -12,3 +12,7 @@ func CrawlTest() {
 	c := colly.NewCollector()
 	c.Visit("example.com")
 }
+func CheckUrl(string urlInput) (err, url *URL) {
+	parsed := url.Parse(userInput)
+	return parsed
+}
