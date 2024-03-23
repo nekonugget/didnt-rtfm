@@ -5,14 +5,16 @@ import (
 	"log"
 
 	"github.com/gocolly/colly"
+	"github.com/nekonugget/didnt-rtfm/utils"
 )
 
-func CrawlTest() {
+func CrawlTest(url string) {
 	log.Println("Hello world")
+	purl, err := utils.CheckUrl(url)
+	if err != nil {
+		return
+	}
+	log.Println(purl)
 	c := colly.NewCollector()
-	c.Visit("example.com")
-}
-func CheckUrl(string urlInput) (err, url *URL) {
-	parsed := url.Parse(userInput)
-	return parsed
+	c.Visit(url)
 }
