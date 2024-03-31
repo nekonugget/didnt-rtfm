@@ -16,5 +16,22 @@ func CrawlTest(url string) {
 	}
 	log.Println(purl)
 	c := colly.NewCollector()
+	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
+		e.Request.Visit(e.Attr("href"))
+	})
+	c.OnHTML("span", func(e *colly.HTMLElement) {
+		log.Println(e.Text)
+	})
+	c.OnRequest(func(r *colly.Request) {
+		log.Println("Visiting: ", r.URL)
+	})
 	c.Visit(url)
+
+	c.OnError(func(_ *colly.Response, err error) {
+		log.Println("Something went wrong:", err)
+	})
+}
+
+func ApiUrls() {
+
 }
